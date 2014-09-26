@@ -1,0 +1,9 @@
+{
+  "name": "websnap",
+  "version": "1.0.0",
+  "dependencies": {
+    "commander": "^2.3.0",
+    "phantomjs": "^1.9.2-6",
+    "webshot": "^0.15.3"
+  }
+}
