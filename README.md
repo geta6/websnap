@@ -11,6 +11,7 @@ $ ./websnap.js -h
     -V, --version        output the version number
     -u, --url <url>      url
     -o, --output <path>  image output path
+    --font <family>      css font family
     --width <width>      width
     --height <height>    height
     --phantom <path>     phantomjs path

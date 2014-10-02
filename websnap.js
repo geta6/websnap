@@ -12,6 +12,7 @@ program
 .usage('[options] <output>')
 .option('-u, --url <url>', 'url')
 .option('-o, --output <path>', 'image output path')
+.option('--font <family>', 'css font family', false)
 .option('--width <width>', 'width', 1024)
 .option('--height <height>', 'height', 768)
 .option('--phantom <path>', 'phantomjs path', path.join(__dirname, 'node_modules', '.bin', 'phantomjs'))
@@ -26,11 +27,24 @@ if (0 < errors.length) {
   process.exit(1);
 }
 
-webshot(program.url, program.output, {
+var options = {
   phantomPath: program.phantom,
   phantomConfig: {'ssl-protocol': 'any'},
   screenSize: {width: program.width, height: program.height}
-}, function(err) {
+};
+
+if (program.font) {
+  options.onLoadFinished = eval([
+    "(function(){",
+    "  var nodes = document.querySelectorAll('*');",
+    "  for (var i = 0, node; node = nodes[i]; i++) {",
+    "    node.style.fontFamily = '" + program.font + " !important';",
+    "  }",
+    "})"
+  ].join('\n'));
+}
+
+webshot(program.url, program.output, options, function(err) {
   if (err) {
     console.error(err);
     process.exit(1);
