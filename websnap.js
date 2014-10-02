@@ -38,7 +38,7 @@ if (program.font) {
     "(function(){",
     "  var nodes = document.querySelectorAll('*');",
     "  for (var i = 0, node; node = nodes[i]; i++) {",
-    "    node.style.fontFamily = '" + program.font + " !important';",
+    "    node.style.fontFamily = \"" + program.font + " !important\";",
     "  }",
     "})"
   ].join('\n'));
