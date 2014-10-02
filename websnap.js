@@ -36,7 +36,7 @@ var options = {
 if (program.font) {
   options.onLoadFinished = eval([
     "(function(){",
-    "  var nodes = document.querySelectorAll('*');",
+    "  var nodes = document.querySelectorAll('*:not(i)');",
     "  for (var i = 0, node; node = nodes[i]; i++) {",
     "    node.style.fontFamily = \"" + program.font + " !important\";",
     "  }",
